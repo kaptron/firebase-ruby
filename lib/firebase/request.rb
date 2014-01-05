@@ -46,7 +46,8 @@ class Firebase
       request = Typhoeus::Request.new(build_url(path),
                                       :body => body,
                                       :method => method,
-                                      :params => query_options)
+                                      :params => query_options,
+                                      :ssl_verifypeer => Rails.env.production?)
       @@hydra.queue(request)
       @@hydra.run
 
